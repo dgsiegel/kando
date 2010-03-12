@@ -1,0 +1,115 @@
+= fnut: A lightweight markup language =
+
+fnut is a lightweight markup language along the lines of markdown,
+textile, txt2tags, challis and others. I created it, as the named
+implementations were too complicated, unflexible and unfriendly to
+me.
+
+== Usage ==
+
+---
+fnut.py [file]
+---
+
+== Syntax ==
+
+All items are separated by at least one empty line. This counts for
+paragraphs too.
+
+
+
+Headers are marked with ``=`` and have to be closed.
+Headers are possible up to level 6 (h6).
+
+= Header level  1 =
+
+== Header level 2 ==
+
+=== Header level 3 ===
+
+==== Header level 4 ====
+
+===== Header level 5 =====
+
+====== Header level 6 ======
+
+
+
+Blockquotes start with at least 2 spaces.
+
+  You can either just indent
+the first line
+
+  Or you can indent
+  both lines
+
+
+
+Code is inserted by adding a --- before and after the Blockquotes
+
+---
+this is a
+     verbatim
+code block
+---
+
+
+
+HTML can be inserted by just starting with a tag and will be ignored, e.g.
+
+<div class="foo">
+some content
+</div>
+
+
+
+Lists are marked by - and the correct indentation. They can be nested.
+
+- first entry
+  - second entry
+    - third entry
+
+
+The following german umlauts, special characters and latin characters will be
+replaced by their equivalent HTML entities in both cases.
+
+ÁÉÍÓÚáéíóú ÀÈÌÒÙàèìòù ÄËÏÖÜäëïöü ÂÊÎÔÛâêîôû ÃÕãõ ßÑñÇç
+
+
+
+HTML special chars, like ``<``, ``>``, ``&`` and ``"`` are escaped with the
+exception of already escaped chars, e.g. &copy;
+
+
+
+A line break is done by using \\
+A new line ;)
+
+
+
+The following text formatting is possible:
+** strong **
+// italic //
+-- strikethrough --
+__ underline __
+`` code ``
+
+
+
+You can also have the text formatting over multiple lines:
+
+This ** text will be bold, even
+if there are multiple
+lines in between **
+
+
+
+The following link formats and image formats are possible
+
+link: [http://www.example.org]
+link with text: [some text http://www.example.org]
+link with image: [http://example.org/files/image.jpg http://www.example.org]
+
+image: [files/image.jpg]
+image with alt text: [alt text files/image.jpg]
+
