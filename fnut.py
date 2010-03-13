@@ -19,7 +19,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # TODO:
-#  - numbered lists
+#  - nest ordered lists into unordered and vice versa
 
 import sys
 import os
@@ -114,12 +114,19 @@ def parse(text):
       else:
         t = "h6"
       paras[i] = re.sub(r"^=+ ", tag(t), re.sub(" =+$", tag(t, open=False), prefmt(paras[i])))
-    elif paras[i].startswith("- "):
+    elif paras[i].startswith("- ") or paras[i].startswith("+ "):
 
       list = []
-      listitems = re.findall("^([ \t]*-) (.+?)$(?=\n^([ \t]*-)|\n*\Z)", paras[i], re.MULTILINE | re.DOTALL)
+      listitems = re.findall("^([ \t]*[-\+]) (.+?)$(?=\n^([ \t]*[-\+])|\n*\Z)", paras[i], re.MULTILINE | re.DOTALL)
 
-      list.append(tag("ul"))
+      if paras[i].startswith("- "):
+        pre_tag = tag("ul")
+        post_tag = tag("ul", open=False)
+      else:
+        pre_tag = tag("ol")
+        post_tag = tag("ol", open=False)
+
+      list.append(pre_tag)
       for item in listitems:
         currentlen = len(item[0])
         nextlen = len(item[2])
@@ -128,15 +135,15 @@ def parse(text):
           list.append(spacer(currentlen) + tag("li") + prefmt(item[1]) + tag("li", open=False))
         elif currentlen < nextlen:
           list.append(spacer(currentlen) + tag("li") + prefmt(item[1]))
-          list.append(spacer(currentlen) + tag("ul"))
+          list.append(spacer(currentlen) + pre_tag)
         else:
           list.append(spacer(currentlen) + tag("li") + prefmt(item[1]) + tag("li", open=False))
           while (currentlen - nextlen) >= 2:
             currentlen = currentlen - 2
-            list.append(spacer(currentlen) + tag("ul", open=False))
+            list.append(spacer(currentlen) + post_tag)
             list.append(spacer(currentlen) + tag("li", open=False))
 
-      list.append(tag("ul", open=False))
+      list.append(post_tag)
       paras[i] = '\n'.join(list)
     elif paras[i].startswith("  "):
       paras[i] = tag("blockquote") + "\n" + prefmt(paras[i]) + "\n" + tag("blockquote", open=False)
