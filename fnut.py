@@ -92,7 +92,7 @@ def spacer(deep):
 
 
 def parse(text):
-  paras = re.split("\n\n+", text)
+  paras = re.split("\n\n+|\n$", text)
 
   for i in range(len(paras)):
 
