@@ -1,6 +1,6 @@
-= fnut: A lightweight markup language =
+= kando: A "kan do" lightweight markup language =
 
-fnut is a lightweight markup language along the lines of markdown,
+kando is a lightweight markup language along the lines of markdown,
 textile, txt2tags, challis and others. I created it, as the named
 implementations were too complicated, unflexible and unfriendly to
 me.
@@ -8,7 +8,7 @@ me.
 == Usage ==
 
 ---
-fnut.py [file]
+kando.py [file]
 ---
 
 == Syntax ==
