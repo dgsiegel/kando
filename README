@@ -1,9 +1,8 @@
-= kando: A "kan do" lightweight markup language =
+= kando: The "kan do" lightweight markup language =
 
-kando is a lightweight markup language along the lines of markdown,
+kando is a very lightweight markup language along the lines of markdown,
 textile, txt2tags, challis and others. I created it, as the named
-implementations were too complicated, unflexible and unfriendly to
-me.
+implementations were too complicated, unflexible and unfriendly to me.
 
 == Usage ==
 
@@ -33,6 +32,8 @@ Headers are possible up to level 6 (h6).
 
 ====== Header level 6 ======
 
+======= Still level 6 header =======
+
 
 
 Blockquotes start with at least 2 spaces.
@@ -41,7 +42,7 @@ Blockquotes start with at least 2 spaces.
 the first line
 
   Or you can indent
-  both lines
+  all lines
 
 
 
@@ -59,6 +60,15 @@ HTML can be inserted by just starting with a tag and will be ignored, e.g.
 
 <div class="foo">
 some content
+</div>
+
+You can also do something funny like putting a parsed paragraph inside a div
+like this:
+
+<div style="text-align: center;">
+
+This paragraph will be **parsed**
+
 </div>
 
 
@@ -82,7 +92,7 @@ replaced by their equivalent HTML entities in both cases.
 
 
 
-HTML special chars, like ``<``, ``>``, ``&`` and ``"`` are escaped with the
+HTML special chars, like ``<``, ``>``, ``&`` and ``"`` will be escaped with the
 exception of already escaped chars, e.g. &copy;
 
 
