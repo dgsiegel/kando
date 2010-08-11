@@ -148,7 +148,7 @@ def parse(text):
     elif paras[i].startswith("  "):
       paras[i] = tag("blockquote") + "\n" + prefmt(paras[i]) + "\n" + tag("blockquote", open=False)
     elif paras[i].startswith("---"):
-      paras[i] = re.sub(r"^---", tag("pre") + tag("code"), re.sub("---$", tag("code", open=False) + tag("pre", open=False), prefmt_simple(paras[i])))
+      paras[i] = re.sub(r"^---\n", tag("pre") + tag("code"), re.sub("---$", tag("code", open=False) + tag("pre", open=False), prefmt_simple(paras[i])))
     elif paras[i].startswith("<"):
       continue
     else:
