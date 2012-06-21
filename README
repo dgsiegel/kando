@@ -71,6 +71,10 @@ This paragraph will be **parsed**
 
 </div>
 
+If you need to add classes to your div containers, use the following syntax
+
+.myclass some content
+
 
 
 Unordered lists are marked by -, ordered by + and the correct indentation.
