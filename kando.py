@@ -151,7 +151,7 @@ def parse(text):
       paras[i] = re.sub(r"^---\n", tag("pre") + tag("code"), re.sub("---$", tag("code", open=False) + tag("pre", open=False), prefmt_simple(paras[i])))
     elif paras[i].startswith("."):
       cls = paras[i].split()[0][1:]
-      paras[i] = re.sub(r"^\.\w+ ", tag("div class=\"" + cls + "\"") + "\n", re.sub("$", "\n" + tag("div", open=False), prefmt(paras[i])))
+      paras[i] = re.sub(r"^\.[\w_-]+ ", tag("div class=\"" + cls + "\"") + "\n", re.sub("$", "\n" + tag("div", open=False), prefmt(paras[i])))
     elif paras[i].startswith("<"):
       continue
     else:
