@@ -57,14 +57,14 @@ def prefmt(t):
   t = re.sub("<", "&lt;", t)
   t = re.sub(">", "&gt;", t)
   t = re.sub('"', "&quot;", t)
-  t = re.sub(r"\\\\", '<br />', t)
+  t = re.sub(r"\\\\", '<br>', t)
   t = re.sub(r"(?ms)\*\*(.*?)\*\*", r"<strong>\1</strong>", t)
   t = re.sub(r"(?ms)(?<!:)//(.+?)(?<!:)//", r"<em>\1</em>", t)
   t = re.sub(r"(?ms)--(.*?)--", r"<del>\1</del>", t)
   t = re.sub(r"(?ms)__(.*?)__", r"<ins>\1</ins>", t)
   t = re.sub(r"(?ms)``(.*?)``", r"<code>\1</code>", t)
   t = re.sub(r"\[(.*?(jpg|jpeg|png|gif))\s?(\S+)\]", r'<a href="\3">[\1]</a>', t)
-  t = re.sub(r"\[(.*?)\s?(\S+(jpg|jpeg|png|gif))\]", r'<img src="\2" alt="\1" />', t)
+  t = re.sub(r"\[(.*?)\s?(\S+(jpg|jpeg|png|gif))\]", r'<img src="\2" alt="\1">', t)
   t = re.sub(r"\[(\S+)\]", r'<a href="\1">\1</a>', t)
   t = re.sub(r"\[(.*?)\s?(\S+)\]", r'<a href="\2">\1</a>', t)
   return prefmt_umlauts(t)
@@ -79,7 +79,7 @@ def prefmt_simple(t):
 
 def tag(t, open=True, self=False):
   if self:
-    return "<" + t + " />"
+    return "<" + t + ">"
   elif open:
     return "<" + t + ">"
   elif not open:
