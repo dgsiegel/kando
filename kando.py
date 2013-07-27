@@ -145,6 +145,8 @@ def parse(text):
 
       list.append(post_tag)
       paras[i] = '\n'.join(list)
+    elif paras[i].startswith("  ") and paras[i].split("\n")[-1].startswith("  --"):
+      paras[i] = tag("blockquote") + "\n" + re.sub(ur"  -- (.*)$", tag("cite") + r"\1" + tag("cite", open=False), prefmt(paras[i])) + "\n" + tag("blockquote", open=False)
     elif paras[i].startswith("  "):
       paras[i] = tag("blockquote") + "\n" + prefmt(paras[i]) + "\n" + tag("blockquote", open=False)
     elif paras[i].startswith("---"):

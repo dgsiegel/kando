@@ -44,6 +44,10 @@ the first line
   Or you can indent
   all lines
 
+Or they can end with a cite
+
+  This is a very important quote
+  -- Random J. Person
 
 
 Code is inserted by adding a --- before and after the Blockquotes
