@@ -49,6 +49,13 @@ Or they can end with a cite
   This is a very important quote
   -- Random J. Person
 
+Multiparagraph quotes can be done with two leading spaces marking a paragraph:
+
+  This is a very important quote
+  
+  And this is the second part
+  -- Random J. Person
+
 
 Code is inserted by adding a --- before and after the Blockquotes
 

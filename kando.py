@@ -146,9 +146,11 @@ def parse(text):
       list.append(post_tag)
       paras[i] = '\n'.join(list)
     elif paras[i].startswith("  ") and paras[i].split("\n")[-1].startswith("  --"):
-      paras[i] = tag("blockquote") + "\n" + re.sub(ur"  -- (.*)$", tag("cite") + r"\1" + tag("cite", open=False), prefmt(paras[i])) + "\n" + tag("blockquote", open=False)
+      parts = paras[i].split("\n  -- ")
+      cite =  tag("cite") + parts[1] + tag("cite", open=False) + "\n"
+      paras[i] = tag("blockquote") + "\n" + "\n".join([tag("p") + "\n" + prefmt(p) + "\n" + tag("p", open=False) for p in parts[0].split("\n  \n")]) + "\n" + cite + tag("blockquote", open=False)
     elif paras[i].startswith("  "):
-      paras[i] = tag("blockquote") + "\n" + prefmt(paras[i]) + "\n" + tag("blockquote", open=False)
+      paras[i] = tag("blockquote") + "\n" + "\n".join([tag("p") + "\n" + prefmt(p) + "\n" + tag("p", open=False) for p in paras[i].split("\n  \n")]) + "\n" + tag("blockquote", open=False)
     elif paras[i].startswith("---"):
       paras[i] = re.sub(r"^---\n", tag("pre") + tag("code"), re.sub("---$", tag("code", open=False) + tag("pre", open=False), prefmt_simple(paras[i])))
     elif paras[i].startswith("."):
