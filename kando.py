@@ -148,7 +148,7 @@ def parse(text):
       paras[i] = '\n'.join(list)
     elif paras[i].startswith("  ") and paras[i].split("\n")[-1].startswith("  --"):
       parts = paras[i].split("\n  -- ")
-      cite =  tag("cite") + parts[1] + tag("cite", open=False) + "\n"
+      cite =  tag("cite") + prefmt(parts[1]) + tag("cite", open=False) + "\n"
       paras[i] = tag("blockquote") + "\n" + "\n".join([tag("p") + "\n" + prefmt(p) + "\n" + tag("p", open=False) for p in parts[0].split("\n  \n")]) + "\n" + cite + tag("blockquote", open=False)
     elif paras[i].startswith("  "):
       paras[i] = tag("blockquote") + "\n" + "\n".join([tag("p") + "\n" + prefmt(p) + "\n" + tag("p", open=False) for p in paras[i].split("\n  \n")]) + "\n" + tag("blockquote", open=False)
