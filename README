@@ -143,3 +143,9 @@ link with image: [http://example.org/files/image.jpg http://www.example.org]
 image: [files/image.jpg]
 image with alt text: [alt text files/image.jpg]
 
+
+
+Lines starting with # are ignored
+
+# Ignored content
+# and this line as well
