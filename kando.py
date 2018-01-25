@@ -64,6 +64,7 @@ def prefmt(t):
   t = re.sub(r"(?ms)--(.*?)--", r"<del>\1</del>", t)
   t = re.sub(r"(?ms)__(.*?)__", r"<ins>\1</ins>", t)
   t = re.sub(r"(?ms)``(.*?)``", r"<code>\1</code>", t)
+  t = re.sub(r"(?ms)~~(.*?)~~", r"<small>\1</small>", t)
   t = re.sub(r"\[(.*?(jpg|jpeg|png|gif|svg))\s?(\S+)\]", r'<a href="\3">[\1]</a>', t)
   t = re.sub(r"\[(.*?)\s?(\S+(jpg|jpeg|png|gif|svg))\]", r'<img src="\2" alt="\1">', t)
   t = re.sub(r"\[(\S+)\]", r'<a href="\1">\1</a>', t)

@@ -123,6 +123,7 @@ The following text formatting is possible:
 -- strikethrough --
 __ underline __
 `` code ``
+~~ small ~~
 
 
 
