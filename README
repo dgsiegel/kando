@@ -120,7 +120,7 @@ A new line ;)
 The following text formatting is possible:
 ** strong **
 // italic //
--- strikethrough --
+++ strikethrough ++
 __ underline __
 `` code ``
 ~~ small ~~
