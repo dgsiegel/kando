@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright © 2010 daniel g. siegel <dgsiegel@gnome.org>
+# Copyright © 2010-2020 daniel g. siegel <daniel@dgsiegel.net>
 #
 # Licensed under the GNU General Public License Version 2
 #
