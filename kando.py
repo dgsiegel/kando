@@ -25,7 +25,6 @@ import sys
 import os
 import re
 import string
-import codecs
 
 
 def prefmt_umlauts(t):
@@ -172,16 +171,16 @@ def parse(text):
 if len(sys.argv) > 1:
   path = sys.argv[1]
 else:
-  print "Usage: %s [file]" % sys.argv[0]
+  print("Usage: %s [file]" % sys.argv[0])
   sys.exit(1)
 
 if not path or not os.path.exists(path):
-  print "Usage: %s [file]" % sys.argv[0]
+  print("Usage: %s [file]" % sys.argv[0])
   sys.exit(1)
 
-f = codecs.open(path, "r", "utf-8")
+f = open(path, "r")
 lines = f.read()
 f.close()
 
-p = parse(lines).encode("utf-8")
-print p
+p = parse(lines)
+print(p)
