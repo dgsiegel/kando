@@ -43,7 +43,7 @@ def prefmt(t):
   t = re.sub("<", "&lt;", t)
   t = re.sub(">", "&gt;", t)
   t = re.sub('"', "&quot;", t)
-  t = re.sub('--', "&ndash;", t)
+  t = re.sub(r"(?<!-)--(?!-)", "&ndash;", t)
   t = re.sub(r"\\\\", '<br>', t)
   t = re.sub(r"(?ms)\*\*(.*?)\*\*", r"<strong>\1</strong>", t)
   t = re.sub(r"(?ms)(?<!:)//(.+?)(?<!:)//", r"<em>\1</em>", t)
