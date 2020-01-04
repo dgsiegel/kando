@@ -25,30 +25,17 @@ import sys
 import os
 import re
 import string
+import html
 
 
 def prefmt_umlauts(t):
-  t = re.sub(ur"([ÁÉÍÓÚáéíóú])", r"&\1acute;", t)
-  t = re.sub(ur"([ÀÈÌÒÙàèìòù])", r"&\1grave;", t)
-  t = re.sub(ur"([ÄËÏÖÜäëïöü])", r"&\1uml;", t)
-  t = re.sub(ur"([ÂÊÎÔÛâêîôû])", r"&\1circ;", t)
-  t = re.sub(ur"([ÃÕãõ])", r"&\1tilde;", t)
-  t = re.sub(ur"&[ÁÀÃÄÂ](\w+;)", r"&A\1", t)
-  t = re.sub(ur"&[áàãäâ](\w+;)", r"&a\1", t)
-  t = re.sub(ur"&[ÉÈËÊ](\w+;)", r"&E\1", t)
-  t = re.sub(ur"&[éèëê](\w+;)", r"&e\1", t)
-  t = re.sub(ur"&[ÍÌÏÎ](\w+;)", r"&I\1", t)
-  t = re.sub(ur"&[íìïî](\w+;)", r"&i\1", t)
-  t = re.sub(ur"&[ÓÒÖÔÕ](\w+;)", r"&O\1", t)
-  t = re.sub(ur"&[óòöôõ](\w+;)", r"&o\1", t)
-  t = re.sub(ur"&[ÚÙÜÛ](\w+;)", r"&U\1", t)
-  t = re.sub(ur"&[úùüû](\w+;)", r"&u\1", t)
-  t = re.sub(ur"ß", r"&szlig;", t)
-  t = re.sub(ur"Ñ", r"&Ntilde;", t)
-  t = re.sub(ur"ñ", r"&ntilde;", t)
-  t = re.sub(ur"Ç", r"&Ccedil;", t)
-  t = re.sub(ur"ç", r"&ccedil;", t)
-  return t
+  r = ""
+  for i in t:
+    if i not in ["&", ";", "<", ">", '"'] and ord(i) in html.entities.codepoint2name:
+      r += "&" + html.entities.codepoint2name[ord(i)] + ";"
+    else:
+      r += i
+  return r
 
 
 def prefmt(t):
@@ -69,6 +56,7 @@ def prefmt(t):
   t = re.sub(r"\[(\S+)\]", r'<a href="\1">\1</a>', t)
   t = re.sub(r"\[(.*?)\s?(\S+)\]", r'<a href="\2">\1</a>', t)
   return prefmt_umlauts(t)
+
 
 def prefmt_simple(t):
   t = re.sub("&", "&amp;", t)
