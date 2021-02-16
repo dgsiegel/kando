@@ -140,6 +140,7 @@ The following link formats and image formats are possible
 link: [http://www.example.org]
 link with text: [some text http://www.example.org]
 link with image: [http://example.org/files/image.jpg http://www.example.org]
+link with image and alt text: [alt text http://example.org/files/image.jpg http://www.example.org]
 
 image: [files/image.jpg]
 image with alt text: [alt text files/image.jpg]
